@@ -18,14 +18,8 @@ public class Main {
         int d = cli.getDepots();
         int s = cli.getSalesmen();
         boolean verbose = cli.isVerbose();
-
-        System.out.printf("Hello and welcome!");
-
-        if (verbose) {
-            System.out.println("Verbose mode enabled" + verbose);
-        } else {
-            System.out.println("Verbose mode not enabled"+ verbose);
-        }
+        Solver solver = new Solver(d, s);
+        solver.RandomSolve(100000);
 
         //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
         System.out.println("**Total cost is " + d + s);
