@@ -20,8 +20,9 @@ public class Main {
         boolean verbose = cli.isVerbose();
         Solver solver = new Solver(d, s);
         solver.RandomSolve(100000);
+        solver.printBestSolution(verbose);
 
         //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
-        System.out.println("**Total cost is " + d + s);
+
     }
 }

@@ -109,26 +109,31 @@ public class Solver {
             // TODO: distance hesaplaması ve en iyiyi saklama kısmı
         }
 
-        printBestSolution();
+        //printBestSolution();
 
     }
 
-    private void printBestSolution() {
-        System.out.println("Best total cost: " + _bestCost);
+    public void printBestSolution(boolean verbose) {
+        int depotNumber = 0;
         for (Depot depot : _bestSolution) {
-            System.out.println("Depot at: " + _allCities[depot.getDepotNumber()]);
+            depotNumber++;
+            System.out.println("Depot" +depotNumber+": " + (verbose ? _allCities[depot.getDepotNumber()] : depot.getDepotNumber()));
             int i = 1;
             for (List<Integer> route : depot.getRoutes()) {
-                System.out.print("  Salesman " + i++ + ": ");
+                System.out.print("  Route " + i++ + ": ");
                 //System.out.print(_allCities[depot.getDepotNumber()] + " -> ");
+                int j = 0;
                 for (int city : route) {
-                    System.out.print(_allCities[city] + " -> ");
+                    j++;
+                    System.out.print(verbose ? _allCities[city] : city);
+                    if(j < route.size()) System.out.print(" , ");
                 }
                 //System.out.println(_allCities[depot.getDepotNumber()]);
                 System.out.println();
             }
             System.out.println();
         }
+        System.out.println("Total cost is " + _bestCost);
     }
 
 }
