@@ -1,0 +1,25 @@
+package yusufekremkecilioglu;
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public interface Args {
+        @Option(shortName = "d") int getDepots();
+        @Option(shortName = "s") int getSalesmen();
+        @Option(shortName = "v", defaultValue = "false") boolean isVerbose();
+    }
+    public static void main(String[] args) {
+
+        Args cli = CliFactory.parseArguments(Args.class, args);
+        int d = cli.getDepots();
+        int s = cli.getSalesmen();
+        boolean verbose = cli.isVerbose();
+        System.out.printf("Hello and welcome!");
+
+        if (verbose) System.out.println("Verbose");
+        else System.out.println("not");
+        //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
+        System.out.println("**Total cost is " + d + s);
+    }
+}
