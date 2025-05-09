@@ -32,6 +32,10 @@ public class Solver {
         }
     }
 
+    public void HeuristicSolve(int iteration){
+
+    }
+
     public void RandomSolve(int iteration) {
         //Önce her depoya bir şehir atanmalı 1-81 arası
         //Atanan şehir sayıları seçilebilecek şehir sayılarından çıkarılmalı
@@ -122,6 +126,8 @@ public class Solver {
                 System.out.println();
             }
             System.out.println();
+
+            //System.out.println(depot.getRoutes().get(0)  + " "+ depot.getRoutes().get(depot.getRoutes().size()-1) + " -> " + depot.getDepotNumber());
         }
         System.out.println("Total cost is " + _bestCost);
     }
