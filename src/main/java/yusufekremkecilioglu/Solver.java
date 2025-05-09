@@ -74,7 +74,7 @@ public class Solver {
                 }
             }
 
-            int totalCost = calculateCost(true);
+            int cost = calculateCost(true);
         }
 
     }
@@ -82,20 +82,7 @@ public class Solver {
     private int calculateCost(boolean saveCost){
         int totalCost = 0;
         for (Depot depot : _depots) {
-            int depotCity = depot.getDepotNumber();
-            for (List<Integer> route : depot.getRoutes()) {
-                if (route.isEmpty()) continue;
-                int cost = 0;
-                // Depodan ilk şehre
-                cost += _distances[depotCity][route.get(0)];
-                // Şehirler arası
-                for (int i = 0; i < route.size() - 1; i++) {
-                    cost += _distances[route.get(i)][route.get(i + 1)];
-                }
-                // Son şehirden tekrar depoya
-                cost += _distances[route.get(route.size() - 1)][depotCity];
-                totalCost += cost;
-            }
+            totalCost += depot.routeCost(_distances);
         }
         if(saveCost){
             // 3. En iyi çözümü sakla
