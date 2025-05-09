@@ -1,24 +1,32 @@
 package yusufekremkecilioglu;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
+
+import static com.lexicalscope.jewel.cli.CliFactory.*;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public interface Args {
         @Option(shortName = "d") int getDepots();
         @Option(shortName = "s") int getSalesmen();
-        @Option(shortName = "v", defaultValue = "false") boolean isVerbose();
+        @Option(shortName = "v", description = "Enable verbose output") boolean isVerbose();
     }
     public static void main(String[] args) {
 
-        Args cli = CliFactory.parseArguments(Args.class, args);
+        Args cli = parseArguments(Args.class, args);
         int d = cli.getDepots();
         int s = cli.getSalesmen();
         boolean verbose = cli.isVerbose();
+
         System.out.printf("Hello and welcome!");
 
-        if (verbose) System.out.println("Verbose");
-        else System.out.println("not");
+        if (verbose) {
+            System.out.println("Verbose mode enabled" + verbose);
+        } else {
+            System.out.println("Verbose mode not enabled"+ verbose);
+        }
+
         //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
         System.out.println("**Total cost is " + d + s);
     }
