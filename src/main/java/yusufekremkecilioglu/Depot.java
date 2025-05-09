@@ -39,6 +39,8 @@ public class Depot {
             cost += distanceMatrix[route.get(route.size() - 1)][_depotNumber];
             totalCost += cost;
         }
+
+
         return totalCost;
     }
 
