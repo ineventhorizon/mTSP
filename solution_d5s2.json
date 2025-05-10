@@ -1,38 +1,38 @@
 {
   "solution": [
     {
-      "depot": "48",
+      "depot": "ARTVİN",
       "routes": [
-        "22 49 67 31 14 8 40 13 70 57 12",
-        "58 16 78 26 20"
+        "BİTLİS SİİRT BATMAN ADIYAMAN GAZİANTEP KAHRAMANMARAŞ SİVAS ERZİNCAN",
+        "KARABÜK BOLU EDİRNE AFYON İÇEL MARDİN ŞIRNAK IĞDIR"
       ]
     },
     {
-      "depot": "61",
+      "depot": "KAYSERİ",
       "routes": [
-        "32 47 34 21 28 7 3",
-        "55 29 46 45 79 69 25 76 53"
+        "AKSARAY BURDUR BURSA YALOVA KOCAELİ KIRKLARELİ TRABZON",
+        "BAYBURT ERZURUM HATAY OSMANİYE ADANA ANTALYA MUĞLA AYDIN YOZGAT"
       ]
     },
     {
-      "depot": "59",
+      "depot": "ISPARTA",
       "routes": [
-        "68 23 37 41 44 38 33 66 0 43",
-        "65 18 17 36 56 54"
+        "AMASYA TUNCELİ ARDAHAN ORDU SİNOP DÜZCE BARTIN SAKARYA TEKİRDAĞ DENİZLİ",
+        "KONYA KİLİS DİYARBAKIR ELAZIĞ KIRŞEHİR KIRIKKALE"
       ]
     },
     {
-      "depot": "62",
+      "depot": "TOKAT",
       "routes": [
-        "6 2 63 9 15 10 5 4 11",
-        "1 64 75 72 71"
+        "MUŞ ŞANLIURFA NİĞDE KARAMAN KÜTAHYA BİLECİK ANKARA",
+        "İSTANBUL ÇANAKKALE BALIKESİR İZMİR MANİSA UŞAK SAMSUN"
       ]
     },
     {
-      "depot": "39",
+      "depot": "BİNGÖL",
       "routes": [
-        "42 19",
-        "50 30 24 35 74 60 52 27 51 77 73 80"
+        "VAN HAKKARİ AĞRI GÜMÜŞHANE GİRESUN ÇORUM ÇANKIRI KASTAMONU ZONGULDAK ESKİŞEHİR NEVŞEHİR MALATYA",
+        "RİZE KARS"
       ]
     }
   ]
