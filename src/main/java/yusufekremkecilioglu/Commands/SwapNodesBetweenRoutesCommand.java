@@ -45,7 +45,7 @@ public class SwapNodesBetweenRoutesCommand implements Command {
         int fromValue = routeFrom.get(_nodeIndexFrom);
         int toValue = routeTo.get(_nodeIndexTo);
 
-        if (fromValue == toValue) return;
+        //if (fromValue == toValue) return;
 
         routeFrom.set(_nodeIndexFrom, toValue);
         routeTo.set(_nodeIndexTo, fromValue);

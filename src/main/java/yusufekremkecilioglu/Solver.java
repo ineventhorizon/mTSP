@@ -1,9 +1,6 @@
 package yusufekremkecilioglu;
 
-import yusufekremkecilioglu.Commands.CommandInvoker;
-import yusufekremkecilioglu.Commands.SwapHubWithNodeInRouteCommand;
-import yusufekremkecilioglu.Commands.SwapNodesBetweenRoutesCommand;
-import yusufekremkecilioglu.Commands.SwapNodesInRouteCommand;
+import yusufekremkecilioglu.Commands.*;
 import yusufekremkecilioglu.Interfaces.Command;
 
 import java.util.ArrayList;
@@ -47,17 +44,17 @@ public class Solver {
             switch (moveType) {
                 case 0:
                     Depot randDepot = getRandomDepot();
-                    Command command = new SwapNodesInRouteCommand(randDepot);
+                    Command command = new InsertNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);
                 break;
                 case 1:
                     randDepot = getRandomDepot();
-                    command = new SwapHubWithNodeInRouteCommand(randDepot);
+                    command = new InsertNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);
                 break;
                 case 2:
                     randDepot = getRandomDepot();
-                    command = new SwapNodesBetweenRoutesCommand(randDepot);
+                    command = new InsertNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);;
                 break;
                 case 3:
