@@ -53,8 +53,16 @@ public class InsertNodeBetweenRoutesCommand implements Command {
         List<Integer> routeFrom = _depot.GetRoute(_routeIndexFrom);
         List<Integer> routeTo = _depot.GetRoute(_routeIndexTo);
 
-        int node = routeTo.get(_nodeIndexTo+1);
-        routeTo.remove(_nodeIndexTo+1);
+        int node;
+        if (_nodeIndexTo + 1 < routeTo.size()) {
+            node = routeTo.get(_nodeIndexTo + 1);
+            routeTo.remove(_nodeIndexTo + 1);
+        } else {
+            // If _nodeIndexTo + 1 is out of bounds, set node to the last element
+            node = routeTo.get(routeTo.size() - 1);
+            routeTo.remove(routeTo.size() - 1);
+        }
+
         routeFrom.add(_nodeIndexFrom, node);
 
     }
