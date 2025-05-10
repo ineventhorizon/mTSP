@@ -1,6 +1,17 @@
 # Examples
-![alt text](images/mvn_clean_package.png)
-
+`mvn clean package`
+![Start up](images/mvn_clean_package.png)
+`java -jar target/mTSP.jar -d 4 -s 2`
+![No Verbose](images/no_verbose.png)
+`java -jar target/mTSP.jar -d 4 -s 2 -v`
+![Verbose](images/verbose.png)
+# UML'S
+Command Pattern usage
+![Command](UML/Command.png)
+Main & Others
+![Main & Others](UML/Main&Others.png)
+Solver class
+![Solver](UML/Solver.png)
 
 # The Multiple Traveling Salesman Problem
 
