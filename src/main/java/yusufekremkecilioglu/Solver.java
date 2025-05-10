@@ -139,7 +139,13 @@ public class Solver {
     public void PrintMoveCount(){
         _invoker.PrintCommandCount();
     }
-
+    public void WriteToJson(int d, int s, boolean verbose) {
+        try {
+            saveSolutionAsJson(_bestSolution,verbose, _allCities, d, s);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private int calculateCost(){
         int totalCost = 0;
@@ -176,7 +182,7 @@ public class Solver {
             _depots.add(copy);
         }
     }
-    public static void SaveSolutionAsJson(List<Depot> bestSolution, double bestCost, boolean verbose, String[] allCities, int depotCount, int salesmenCount) throws IOException {
+    private static void saveSolutionAsJson(List<Depot> bestSolution,boolean verbose, String[] allCities, int depotCount, int salesmenCount) throws IOException {
         StringBuilder json = new StringBuilder();
         json.append("{\n  \"solution\": [\n");
 
@@ -206,22 +212,11 @@ public class Solver {
         json.append("  ]\n");
         json.append("}");
 
-        // Write to file
         try (FileWriter file = new FileWriter("solution_d"+depotCount+"s"+salesmenCount+".json")) {
             file.write(json.toString());
         }
 
-        System.out.println("Formatted solution saved. Total cost is: " + bestCost);
+        System.out.println("Formatted solution saved");
     }
-
-    public void WriteToJson(int d, int s, boolean verbose) {
-        try {
-            SaveSolutionAsJson(_bestSolution, _bestCost, verbose, _allCities, d, s);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
 
 }
