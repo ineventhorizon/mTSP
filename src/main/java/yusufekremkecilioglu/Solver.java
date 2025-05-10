@@ -2,6 +2,7 @@ package yusufekremkecilioglu;
 
 import yusufekremkecilioglu.Commands.CommandInvoker;
 import yusufekremkecilioglu.Commands.SwapHubWithNodeInRouteCommand;
+import yusufekremkecilioglu.Commands.SwapNodesBetweenRoutesCommand;
 import yusufekremkecilioglu.Commands.SwapNodesInRouteCommand;
 import yusufekremkecilioglu.Interfaces.Command;
 
@@ -39,8 +40,9 @@ public class Solver {
     public void HeuristicSolve(int iteration){
         copyBestToDepots();
         CommandInvoker invoker = new CommandInvoker();
+        int undoCount = 0;
         for(int i=0;i<iteration;i++){
-            int moveType = _rand.nextInt(5);
+            int moveType = _rand.nextInt(3);
             // Randomly choose a move type
             switch (moveType) {
                 case 0:
@@ -55,30 +57,31 @@ public class Solver {
                 break;
                 case 2:
                     randDepot = getRandomDepot();
-                    command = new SwapHubWithNodeInRouteCommand(randDepot);
+                    command = new SwapNodesBetweenRoutesCommand(randDepot);
                     invoker.ExecuteCommand(command);;
                 break;
                 case 3:
-                    randDepot = getRandomDepot();
-                    command = new SwapHubWithNodeInRouteCommand(randDepot);
-                    invoker.ExecuteCommand(command);
+                    //randDepot = getRandomDepot();
+                    //command = new NewC(randDepot);
+                    //invoker.ExecuteCommand(command);
                 break;
                 case 4:
-                    randDepot = getRandomDepot();
-                    command = new SwapHubWithNodeInRouteCommand(randDepot);
-                    invoker.ExecuteCommand(command);
+                    //randDepot = getRandomDepot();
+                    //command = new SwapNodesBetweenRoutesCommand(randDepot);
+                    //invoker.ExecuteCommand(command);
                 break;
             }
-
-
             int cost = calculateCost();
             if(cost < _bestCost){
                 saveToBestSolution(cost);
             }
             else {
                 invoker.UndoLastCommand();
+                undoCount++;
             }
         }
+
+        System.out.println(undoCount);
     }
     public void RandomSolve(int iteration) {
         for (int iter = 0; iter < iteration; iter++) {
