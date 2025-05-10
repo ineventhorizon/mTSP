@@ -99,7 +99,7 @@ public class Solver {
 
             // 2. Depo nesnelerine şehirleri ata
             for (int i = 0; i < _numberOfDepots; i++) {
-                _depots.get(i).setDepotNumber(depotCities.get(i));
+                _depots.get(i).SetDepotNumber(depotCities.get(i));
             }
 
             // 3. Kalan şehirleri satıcılara dağıt
@@ -118,7 +118,7 @@ public class Solver {
             int routeIndex = 0;
             for (Depot depot : _depots) {
                 for (int i = 0; i < _numberOfSalesmen; i++) {
-                    depot.getRoutes().set(i, allRoutes.get(routeIndex++));
+                    depot.GetRoutes().set(i, allRoutes.get(routeIndex++));
                 }
             }
 
@@ -132,9 +132,9 @@ public class Solver {
         int depotNumber = 0;
         for (Depot depot : _bestSolution) {
             depotNumber++;
-            System.out.println("Depot" +depotNumber+": " + (verbose ? _allCities[depot.getDepotNumber()] : depot.getDepotNumber()));
+            System.out.println("Depot" +depotNumber+": " + (verbose ? _allCities[depot.GetDepotNumber()] : depot.GetDepotNumber()));
             int i = 1;
-            for (List<Integer> route : depot.getRoutes()) {
+            for (List<Integer> route : depot.GetRoutes()) {
                 System.out.print("  Route " + i++ + ": ");
                 //System.out.print(_allCities[depot.getDepotNumber()] + " -> ");
                 int j = 0;
@@ -157,7 +157,7 @@ public class Solver {
     private int calculateCost(){
         int totalCost = 0;
         for (Depot depot : _depots) {
-            totalCost += depot.routeCost(_distances);
+            totalCost += depot.RouteCost(_distances);
         }
         return totalCost;
     }
@@ -167,9 +167,9 @@ public class Solver {
         // Deep copy of best solution
         _bestSolution = new ArrayList<>();
         for (Depot depot : _depots) {
-            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
+            Depot copy = new Depot(depot.GetDepotNumber(), _numberOfSalesmen);
             for (int i = 0; i < _numberOfSalesmen; i++) {
-                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
+                copy.GetRoutes().set(i, new ArrayList<>(depot.GetRoutes().get(i)));
             }
             _bestSolution.add(copy);
         }
@@ -181,9 +181,9 @@ public class Solver {
     private void copyBestToDepots(){
         _depots = new ArrayList<>();
         for (Depot depot : _bestSolution) {
-            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
+            Depot copy = new Depot(depot.GetDepotNumber(), _numberOfSalesmen);
             for (int i = 0; i < _numberOfSalesmen; i++) {
-                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
+                copy.GetRoutes().set(i, new ArrayList<>(depot.GetRoutes().get(i)));
             }
             _depots.add(copy);
         }

@@ -1,7 +1,6 @@
 package yusufekremkecilioglu;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Depot {
@@ -9,16 +8,16 @@ public class Depot {
     private int _depotNumber;
 
 
-    public int getDepotNumber() {
+    public int GetDepotNumber() {
         return _depotNumber;
     }
-    public void setDepotNumber(int _depotNumber){
+    public void SetDepotNumber(int _depotNumber){
         this._depotNumber = _depotNumber;
     }
-    public List<List<Integer>> getRoutes() {
+    public List<List<Integer>> GetRoutes() {
         return _routes;
     }
-    public List<Integer> getRoute(int index){
+    public List<Integer> GetRoute(int index){
         if(_routes.get(index).isEmpty() || index > _routes.size()) return new ArrayList<>();
         return _routes.get(index);
     }
@@ -29,7 +28,7 @@ public class Depot {
             _routes.add(new ArrayList<>());
         }
     }
-    public int routeCost(int[][] distanceMatrix){
+    public int RouteCost(int[][] distanceMatrix){
 
         int totalCost = 0;
         for (List<Integer> route : _routes){

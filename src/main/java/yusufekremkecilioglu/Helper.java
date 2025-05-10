@@ -9,7 +9,7 @@ public class Helper {
         if (list == null || list.isEmpty()) throw new IllegalArgumentException("List cannot be null or empty");
         return _random.nextInt(list.size());
     }
-    public static <T> int[] getTwoDistinctRandomIndexes(List<T> list) {
+    public static <T> int[] GetTwoDistinctRandomIndexes(List<T> list) {
         if (list == null || list.size() < 2) throw new IllegalArgumentException("List must have at least 2 elements");
 
         int first = _random.nextInt(list.size());
@@ -17,7 +17,10 @@ public class Helper {
         do {
             second = _random.nextInt(list.size());
         } while (second == first);
-
         return new int[]{first, second};
+    }
+
+    public static void DeepCopyDepot(Depot from, Depot to){
+
     }
 }
