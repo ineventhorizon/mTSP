@@ -24,6 +24,8 @@ public class Main {
 
         solver.HeuristicSolve(5000000);
         solver.PrintBestSolution(verbose);
+        solver.PrintMoveCount();
 
+        solver.WriteToJson(d,s, verbose);
     }
 }

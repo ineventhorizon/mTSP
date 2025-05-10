@@ -1,18 +1,24 @@
 package yusufekremkecilioglu;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import yusufekremkecilioglu.Commands.*;
 import yusufekremkecilioglu.Interfaces.Command;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Solver {
     private String[] _allCities = TurkishNetwork.cities;
     private int[][] _distances = TurkishNetwork.distance;
     private int _totalCities = TurkishNetwork.cities.length;
     private static final Random _rand = new Random();
+    private static final CommandInvoker _invoker = new CommandInvoker();
 
     private List<Depot> _depots;
 
@@ -36,12 +42,11 @@ public class Solver {
     }
     public void HeuristicSolve(int iteration){
         copyBestToDepots();
-        CommandInvoker invoker = new CommandInvoker();
-        int undoCount = 0;
         for(int i=0;i<iteration;i++){
             int moveType = _rand.nextInt(5);
             Depot randDepot = getRandomDepot(); // Hepsinde ortaksa dışarı alabilirsin
             Command command = null;
+
             switch (moveType) {
                 case 0:
                     command = new InsertNodeBetweenRoutesCommand(randDepot);
@@ -51,7 +56,6 @@ public class Solver {
                 break;
                 case 2:
                     command = new SwapHubWithNodeInRouteCommand(randDepot);
-
                 break;
                 case 3:
                     command = new SwapNodesBetweenRoutesCommand(randDepot);
@@ -61,22 +65,17 @@ public class Solver {
                 break;
             }
 
-            invoker.ExecuteCommand(command);
+            _invoker.ExecuteCommand(command);
             int cost = calculateCost();
-            //System.out.println("iter count:"  + i +" | MoveType: " + moveType + " | Depot: " + randDepot.GetName() + "| Cost: "+ cost + "| Best cost: "+ _bestCost);
+
             if(cost < _bestCost){
-                //System.out.println("iter count:"  +i + "| Cost: "+ cost + "| Current Best cost: "+ _bestCost + " changed");
                 saveToBestSolution(cost);
-                //copyBestToDepots();
-                //System.out.println("iter count:"  +i+ "| Cost: "+ cost + "| New best cost: "+ _bestCost + " changed");
-                //System.out.println("-----");
-                invoker.SuccessfulCommand();
+                _invoker.SuccessfulCommand();
             }
             else {
-                invoker.UndoLastCommand();
+                _invoker.UndoLastCommand();
             }
         }
-        invoker.PrintCommandCount();
     }
     public void RandomSolve(int iteration) {
         for (int iter = 0; iter < iteration; iter++) {
@@ -137,6 +136,9 @@ public class Solver {
         }
         System.out.println("Total cost is " + _bestCost);
     }
+    public void PrintMoveCount(){
+        _invoker.PrintCommandCount();
+    }
 
 
     private int calculateCost(){
@@ -174,4 +176,52 @@ public class Solver {
             _depots.add(copy);
         }
     }
+    public static void SaveSolutionAsJson(List<Depot> bestSolution, double bestCost, boolean verbose, String[] allCities, int depotCount, int salesmenCount) throws IOException {
+        StringBuilder json = new StringBuilder();
+        json.append("{\n  \"solution\": [\n");
+
+        for (int d = 0; d < bestSolution.size(); d++) {
+            Depot depot = bestSolution.get(d);
+            json.append("    {\n");
+            json.append("      \"depot\": \"").append(verbose ? allCities[depot.GetDepotNumber()] : depot.GetDepotNumber()).append("\",\n");
+            json.append("      \"routes\": [\n");
+
+            List<List<Integer>> routes = depot.GetRoutes();
+            for (int r = 0; r < routes.size(); r++) {
+                List<Integer> route = routes.get(r);
+                String routeStr = route.stream()
+                        .map(city -> verbose ? allCities[city] : String.valueOf(city))
+                        .collect(Collectors.joining(" "));
+                json.append("        \"").append(routeStr).append("\"");
+                if (r < routes.size() - 1) json.append(",");
+                json.append("\n");
+            }
+
+            json.append("      ]\n");
+            json.append("    }");
+            if (d < bestSolution.size() - 1) json.append(",");
+            json.append("\n");
+        }
+
+        json.append("  ]\n");
+        json.append("}");
+
+        // Write to file
+        try (FileWriter file = new FileWriter("solution_d"+depotCount+"s"+salesmenCount+".json")) {
+            file.write(json.toString());
+        }
+
+        System.out.println("Formatted solution saved. Total cost is: " + bestCost);
+    }
+
+    public void WriteToJson(int d, int s, boolean verbose) {
+        try {
+            SaveSolutionAsJson(_bestSolution, _bestCost, verbose, _allCities, d, s);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 }
