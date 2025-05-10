@@ -8,7 +8,7 @@
 ![No Verbose](images/no_verbose.png)
 
 
-`java -jar target/mTSP.jar -d 4 -s 2 -v`
+`java -jar target/mTSP.jar -d 5 -s 2 -v`
 ![Verbose](images/verbose.png)
 
 # UML'S
