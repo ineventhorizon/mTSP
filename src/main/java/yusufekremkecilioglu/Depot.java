@@ -18,6 +18,10 @@ public class Depot {
     public List<List<Integer>> getRoutes() {
         return _routes;
     }
+    public List<Integer> getRoute(int index){
+        if(_routes.get(index).isEmpty() || index > _routes.size()) return new ArrayList<>();
+        return _routes.get(index);
+    }
     public  Depot(int depotNumber, int salesmanCount){
         this._depotNumber = depotNumber;
         _routes = new ArrayList<>();
@@ -43,8 +47,7 @@ public class Depot {
 
         return totalCost;
     }
-
-
-
-
+    public String GetName(){
+        return TurkishNetwork.cities[_depotNumber];
+    }
 }
