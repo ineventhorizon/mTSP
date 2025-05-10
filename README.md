@@ -1,3 +1,7 @@
+# Examples
+![alt text](images/mvn_clean_package.png)
+
+
 # The Multiple Traveling Salesman Problem
 
 The [Multiple Traveling Salesman Problem](https://neos-guide.org/content/multiple-traveling-salesman-problem-mtsp) (*m*TSP) in which more than one salesman is allowed is a generalization of the Traveling Salesman Problem (TSP).
@@ -253,3 +257,5 @@ If the program ran with `-d 4 -s 2`, the result will be saved into `solution_d4s
 See which solutions have the best scores. Coming soon, stay tuned!
 
 :exclamation: For Part-II you will be teaming up with students of Industrial Engineering Department. Prepare yourselves.
+
+
