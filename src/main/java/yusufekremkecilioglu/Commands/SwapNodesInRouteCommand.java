@@ -22,7 +22,7 @@ public class SwapNodesInRouteCommand implements Command {
         int[] randomIndexes  = Helper.GetTwoDistinctRandomIndexes(_depot.GetRoute(_routeIndex));
         this._nodeIndexFrom = randomIndexes[0];
         this._nodeIndexTo = randomIndexes[1];
-        this._nodesBeforeSwap = new ArrayList<>(depot.GetRoute(_routeIndex));
+        this._nodesBeforeSwap = new ArrayList<>(_depot.GetRoute(_routeIndex));
     }
 
     @Override

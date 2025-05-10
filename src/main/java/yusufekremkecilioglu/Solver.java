@@ -1,6 +1,7 @@
 package yusufekremkecilioglu;
 
 import yusufekremkecilioglu.Commands.CommandInvoker;
+import yusufekremkecilioglu.Commands.SwapHubWithNodeInRouteCommand;
 import yusufekremkecilioglu.Commands.SwapNodesInRouteCommand;
 import yusufekremkecilioglu.Interfaces.Command;
 
@@ -49,22 +50,22 @@ public class Solver {
                 break;
                 case 1:
                     randDepot = getRandomDepot();
-                    command = new SwapNodesInRouteCommand(randDepot);
+                    command = new SwapHubWithNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);
                 break;
                 case 2:
                     randDepot = getRandomDepot();
-                    command = new SwapNodesInRouteCommand(randDepot);
+                    command = new SwapHubWithNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);;
                 break;
                 case 3:
                     randDepot = getRandomDepot();
-                    command = new SwapNodesInRouteCommand(randDepot);
+                    command = new SwapHubWithNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);
                 break;
                 case 4:
                     randDepot = getRandomDepot();
-                    command = new SwapNodesInRouteCommand(randDepot);
+                    command = new SwapHubWithNodeInRouteCommand(randDepot);
                     invoker.ExecuteCommand(command);
                 break;
             }
