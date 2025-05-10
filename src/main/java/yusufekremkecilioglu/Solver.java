@@ -12,7 +12,7 @@ public class Solver {
     private String[] _allCities = TurkishNetwork.cities;
     private int[][] _distances = TurkishNetwork.distance;
     private int _totalCities = TurkishNetwork.cities.length;
-    private Random _rand = new Random();
+    private static final Random _rand = new Random();
 
     private List<Depot> _depots;
 
@@ -39,46 +39,44 @@ public class Solver {
         CommandInvoker invoker = new CommandInvoker();
         int undoCount = 0;
         for(int i=0;i<iteration;i++){
-            int moveType = _rand.nextInt(3);
-            // Randomly choose a move type
+            int moveType = _rand.nextInt(5);
+            Depot randDepot = getRandomDepot(); // Hepsinde ortaksa dışarı alabilirsin
+            Command command = null;
             switch (moveType) {
                 case 0:
-                    Depot randDepot = getRandomDepot();
-                    Command command = new InsertNodeInRouteCommand(randDepot);
-                    invoker.ExecuteCommand(command);
+                    command = new InsertNodeBetweenRoutesCommand(randDepot);
                 break;
                 case 1:
-                    randDepot = getRandomDepot();
                     command = new InsertNodeInRouteCommand(randDepot);
-                    invoker.ExecuteCommand(command);
                 break;
                 case 2:
-                    randDepot = getRandomDepot();
-                    command = new InsertNodeInRouteCommand(randDepot);
-                    invoker.ExecuteCommand(command);;
+                    command = new SwapHubWithNodeInRouteCommand(randDepot);
+
                 break;
                 case 3:
-                    //randDepot = getRandomDepot();
-                    //command = new NewC(randDepot);
-                    //invoker.ExecuteCommand(command);
+                    command = new SwapNodesBetweenRoutesCommand(randDepot);
                 break;
                 case 4:
-                    //randDepot = getRandomDepot();
-                    //command = new SwapNodesBetweenRoutesCommand(randDepot);
-                    //invoker.ExecuteCommand(command);
+                    command = new SwapNodesInRouteCommand(randDepot);
                 break;
             }
+
+            invoker.ExecuteCommand(command);
             int cost = calculateCost();
+            //System.out.println("iter count:"  + i +" | MoveType: " + moveType + " | Depot: " + randDepot.GetName() + "| Cost: "+ cost + "| Best cost: "+ _bestCost);
             if(cost < _bestCost){
+                //System.out.println("iter count:"  +i + "| Cost: "+ cost + "| Current Best cost: "+ _bestCost + " changed");
                 saveToBestSolution(cost);
+                //copyBestToDepots();
+                //System.out.println("iter count:"  +i+ "| Cost: "+ cost + "| New best cost: "+ _bestCost + " changed");
+                //System.out.println("-----");
+                invoker.SuccessfulCommand();
             }
             else {
                 invoker.UndoLastCommand();
-                undoCount++;
             }
         }
-
-        System.out.println(undoCount);
+        invoker.PrintCommandCount();
     }
     public void RandomSolve(int iteration) {
         for (int iter = 0; iter < iteration; iter++) {
@@ -144,6 +142,7 @@ public class Solver {
     private int calculateCost(){
         int totalCost = 0;
         for (Depot depot : _depots) {
+            //System.out.println("Calculating" +depot.GetName() + "");
             totalCost += depot.RouteCost(_distances);
         }
         return totalCost;

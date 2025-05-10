@@ -35,8 +35,14 @@ public class SwapNodesInRouteCommand implements Command {
     @Override
     public void Undo() {
         List<Integer> route = _depot.GetRoute(_routeIndex);
-        route.set(_nodeIndexFrom, _nodesBeforeSwap.get(_nodeIndexFrom));
-        route.set(_nodeIndexTo, _nodesBeforeSwap.get(_nodeIndexTo));
+        Collections.swap(route, _nodeIndexFrom, _nodeIndexTo);
+        //route.set(_nodeIndexFrom, _nodesBeforeSwap.get(_nodeIndexFrom));
+        //route.set(_nodeIndexTo, _nodesBeforeSwap.get(_nodeIndexTo));
         //System.out.println("Undo-ed" + _nodeIndexFrom + " to " + _nodeIndexTo);
+    }
+
+    @Override
+    public String GetName() {
+        return "swapNodesInRoute";
     }
 }

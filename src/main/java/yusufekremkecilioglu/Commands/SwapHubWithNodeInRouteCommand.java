@@ -27,12 +27,20 @@ public class SwapHubWithNodeInRouteCommand implements Command {
         List<Integer> route = _depot.GetRoute(_routeIndex);
         _depot.SetDepotNumber(route.get(_randomIndexFromRoute));
         route.set(_randomIndexFromRoute, _depotNumber);
+        //System.out.println("Swapped "+_depotNumber + "with " + _depot.GetDepotNumber());
     }
 
     @Override
     public void Undo() {
         List<Integer> route = _depot.GetRoute(_routeIndex);
         _depot.SetDepotNumber(_depotNumber);
-        route.set(_randomIndexFromRoute, _nodesBeforeSwap.get(_randomIndexFromRoute));
+        route.clear();
+        route.addAll(_nodesBeforeSwap);
+        //route.set(_randomIndexFromRoute, _nodesBeforeSwap.get(_randomIndexFromRoute));
+    }
+
+    @Override
+    public String GetName() {
+        return "swapHubWithNodeInRoute";
     }
 }

@@ -28,13 +28,24 @@ public class InsertNodeInRouteCommand implements Command {
         List<Integer> route = _depot.GetRoute(_routeIndex);
 
         if (route.size() <= 2) return;
+        if (_nodeIndexFrom < 0 || _nodeIndexFrom >= route.size() || _nodeIndexTo < 0 || _nodeIndexTo >= route.size()) return;
+
+
 
         int node = route.get(_nodeIndexFrom);
         route.remove(_nodeIndexFrom);
+
+
         int insertIndex = _nodeIndexTo;
         if (_nodeIndexFrom < _nodeIndexTo) {
             insertIndex--; // Çünkü bir eleman silindi, hedef sola kaydı
         }
+
+        if (insertIndex >= route.size()) {
+            insertIndex = route.size() - 1; // Prevent out-of-bounds insertion
+        }
+
+
         route.add(insertIndex + 1, node);
 
     }
@@ -44,5 +55,10 @@ public class InsertNodeInRouteCommand implements Command {
         List<Integer> route = _depot.GetRoute(_routeIndex);
         route.clear();
         route.addAll(_nodesBeforeSwap);
+    }
+
+    @Override
+    public String GetName() {
+        return "insertNodeInRoute";
     }
 }

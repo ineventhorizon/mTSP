@@ -29,7 +29,6 @@ public class Depot {
         }
     }
     public int RouteCost(int[][] distanceMatrix){
-
         int totalCost = 0;
         for (List<Integer> route : _routes){
             if(_routes.isEmpty()) continue;
@@ -43,7 +42,7 @@ public class Depot {
             totalCost += cost;
         }
 
-
+        //System.out.println("Depot" + _depotNumber + " cost is " + totalCost);
         return totalCost;
     }
     public String GetName(){

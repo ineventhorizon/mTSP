@@ -4,10 +4,9 @@ import yusufekremkecilioglu.Depot;
 import yusufekremkecilioglu.Helper;
 import yusufekremkecilioglu.Interfaces.Command;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SwapNodesBetweenRoutesCommand implements Command {
+public class InsertNodeBetweenRoutesCommand implements Command {
     private Depot _depot;
 
     private int _routeIndexFrom;
@@ -16,10 +15,7 @@ public class SwapNodesBetweenRoutesCommand implements Command {
     private int _nodeIndexFrom;
     private int _nodeIndexTo;
 
-    private List<Integer> _nodesBeforeSwapFrom;
-    private List<Integer> _nodesBeforeSwapTo;
-
-    public SwapNodesBetweenRoutesCommand(Depot depot){
+    public InsertNodeBetweenRoutesCommand(Depot depot){
         this._depot = depot;
 
         //Choose 2 random routes
@@ -30,28 +26,26 @@ public class SwapNodesBetweenRoutesCommand implements Command {
         //Choose 2 random nodes
         this._nodeIndexFrom = Helper.GetRandomIndex(_depot.GetRoute(_routeIndexFrom));
         this._nodeIndexTo = Helper.GetRandomIndex(_depot.GetRoute(_routeIndexTo));
-
-        //Set before nodes
-        this._nodesBeforeSwapFrom = new ArrayList<>(_depot.GetRoute(_routeIndexFrom));
-        this._nodesBeforeSwapTo = new ArrayList<>(_depot.GetRoute(_routeIndexTo));
-
     }
-
 
     @Override
     public void Execute() {
         List<Integer> routeFrom = _depot.GetRoute(_routeIndexFrom);
         List<Integer> routeTo = _depot.GetRoute(_routeIndexTo);
-        int fromValue = routeFrom.get(_nodeIndexFrom);
-        int toValue = routeTo.get(_nodeIndexTo);
 
-        //if (fromValue == toValue) return;
+        if (routeFrom.size() <= 2) return;
 
-        routeFrom.set(_nodeIndexFrom, toValue);
-        routeTo.set(_nodeIndexTo, fromValue);
 
-        //System.out.println(_depot.GetName() +" in route " + _routeIndexFrom+1  +" ->" + _routeIndexTo + " to " + _nodeIndexFrom + _nodeIndexTo);
 
+        int node = routeFrom.get(_nodeIndexFrom);
+        routeFrom.remove(_nodeIndexFrom);
+
+        int insertIndex = _nodeIndexTo + 1;
+        if (insertIndex > routeTo.size()) {
+            insertIndex = routeTo.size(); // Prevent out-of-bounds insertion
+        }
+
+        routeTo.add(insertIndex, node);
     }
 
     @Override
@@ -59,19 +53,14 @@ public class SwapNodesBetweenRoutesCommand implements Command {
         List<Integer> routeFrom = _depot.GetRoute(_routeIndexFrom);
         List<Integer> routeTo = _depot.GetRoute(_routeIndexTo);
 
-        routeFrom.clear();
-        routeTo.clear();
-
-        routeFrom.addAll(_nodesBeforeSwapFrom);
-        routeTo.addAll(_nodesBeforeSwapTo);
-
-        //routeFrom.set(_nodeIndexFrom, _nodesBeforeSwapFrom.get(_nodeIndexFrom));
-        //routeTo.set(_nodeIndexTo, _nodesBeforeSwapTo.get(_nodeIndexTo));
+        int node = routeTo.get(_nodeIndexTo+1);
+        routeTo.remove(_nodeIndexTo+1);
+        routeFrom.add(_nodeIndexFrom, node);
 
     }
 
     @Override
     public String GetName() {
-        return "swapNodesBetweenRoutes";
+        return "insertNodeBetweenRoutes";
     }
 }

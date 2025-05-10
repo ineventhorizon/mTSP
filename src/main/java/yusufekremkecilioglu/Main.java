@@ -25,7 +25,5 @@ public class Main {
         solver.HeuristicSolve(5000000);
         solver.PrintBestSolution(verbose);
 
-        //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
-
     }
 }
