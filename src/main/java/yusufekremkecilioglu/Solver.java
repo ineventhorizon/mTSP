@@ -35,18 +35,8 @@ public class Solver {
             _depots.add(depot);
         }
     }
-
     public void HeuristicSolve(int iteration){
-
-        _depots = new ArrayList<>();
-        for (Depot depot : _bestSolution) {
-            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
-            for (int i = 0; i < _numberOfSalesmen; i++) {
-                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
-            }
-            _depots.add(copy);
-        }
-
+        copyBestToDepots();
         CommandInvoker invoker = new CommandInvoker();
         for(int i=0;i<iteration;i++){
             int moveType = _rand.nextInt(5);
@@ -88,7 +78,6 @@ public class Solver {
                 invoker.UndoLastCommand();
             }
         }
-
     }
     public void RandomSolve(int iteration) {
         //Önce her depoya bir şehir atanmalı 1-81 arası
@@ -139,27 +128,7 @@ public class Solver {
         }
 
     }
-    private int calculateCost(){
-        int totalCost = 0;
-        for (Depot depot : _depots) {
-            totalCost += depot.routeCost(_distances);
-        }
-        return totalCost;
-    }
-    private void saveToBestSolution(int totalCost){
-        _bestCost = totalCost;
-
-        // Deep copy of best solution
-        _bestSolution = new ArrayList<>();
-        for (Depot depot : _depots) {
-            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
-            for (int i = 0; i < _numberOfSalesmen; i++) {
-                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
-            }
-            _bestSolution.add(copy);
-        }
-    }
-    public void printBestSolution(boolean verbose) {
+    public void PrintBestSolution(boolean verbose) {
         int depotNumber = 0;
         for (Depot depot : _bestSolution) {
             depotNumber++;
@@ -183,13 +152,40 @@ public class Solver {
         }
         System.out.println("Total cost is " + _bestCost);
     }
+
+
+    private int calculateCost(){
+        int totalCost = 0;
+        for (Depot depot : _depots) {
+            totalCost += depot.routeCost(_distances);
+        }
+        return totalCost;
+    }
+    private void saveToBestSolution(int totalCost){
+        _bestCost = totalCost;
+
+        // Deep copy of best solution
+        _bestSolution = new ArrayList<>();
+        for (Depot depot : _depots) {
+            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
+            for (int i = 0; i < _numberOfSalesmen; i++) {
+                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
+            }
+            _bestSolution.add(copy);
+        }
+    }
     private Depot getRandomDepot(){
         int randomDepotIndex = Helper.GetRandomIndex(_depots);
         return _depots.get(randomDepotIndex);
     }
-
-    //Şuanda _depots ve cost fonksiyonu değiştirilecek heuristic en iyi üstünden gitmesi gerekiyor
-
-
-
+    private void copyBestToDepots(){
+        _depots = new ArrayList<>();
+        for (Depot depot : _bestSolution) {
+            Depot copy = new Depot(depot.getDepotNumber(), _numberOfSalesmen);
+            for (int i = 0; i < _numberOfSalesmen; i++) {
+                copy.getRoutes().set(i, new ArrayList<>(depot.getRoutes().get(i)));
+            }
+            _depots.add(copy);
+        }
+    }
 }

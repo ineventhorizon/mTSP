@@ -20,10 +20,10 @@ public class Main {
         boolean verbose = cli.isVerbose();
         Solver solver = new Solver(d, s);
         solver.RandomSolve(100000);
-        solver.printBestSolution(verbose);
+        solver.PrintBestSolution(verbose);
 
         solver.HeuristicSolve(5000000);
-        solver.printBestSolution(verbose);
+        solver.PrintBestSolution(verbose);
 
         //System.out.println("Rows: " + TurkishNetwork.distance.length + ", Columns: " + TurkishNetwork.distance[0].length);
 
