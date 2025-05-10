@@ -80,12 +80,7 @@ public class Solver {
         }
     }
     public void RandomSolve(int iteration) {
-        //Önce her depoya bir şehir atanmalı 1-81 arası
-        //Atanan şehir sayıları seçilebilecek şehir sayılarından çıkarılmalı
-        //Daha sonra atanmayan şehirlerden ve tüm şehirleri dolaşacak şekilde depots sayısı ve number of salesman sayısına göre her depotun routeuna bölüştürmeli
-
         for (int iter = 0; iter < iteration; iter++) {
-            //int prevCost = calculateCost();
             List<Integer> allCitiesList = new ArrayList<>();
             for (int i = 0; i < _totalCities; i++) {
                 allCitiesList.add(i);
@@ -93,16 +88,13 @@ public class Solver {
 
             Collections.shuffle(allCitiesList, _rand);
 
-            // 1. Depo şehirlerini seç
             List<Integer> depotCities = allCitiesList.subList(0, _numberOfDepots);
             List<Integer> remainingCities = new ArrayList<>(allCitiesList.subList(_numberOfDepots, allCitiesList.size()));
 
-            // 2. Depo nesnelerine şehirleri ata
             for (int i = 0; i < _numberOfDepots; i++) {
                 _depots.get(i).SetDepotNumber(depotCities.get(i));
             }
 
-            // 3. Kalan şehirleri satıcılara dağıt
             Collections.shuffle(remainingCities, _rand);
             int salesmanTotal = _numberOfDepots * _numberOfSalesmen;
             List<List<Integer>> allRoutes = new ArrayList<>();
@@ -114,7 +106,6 @@ public class Solver {
                 allRoutes.get(i % salesmanTotal).add(remainingCities.get(i));
             }
 
-            // 4. Satıcı rotalarını depolara dağıt
             int routeIndex = 0;
             for (Depot depot : _depots) {
                 for (int i = 0; i < _numberOfSalesmen; i++) {
@@ -126,7 +117,6 @@ public class Solver {
             if(cost < _bestCost) saveToBestSolution(cost);
 
         }
-
     }
     public void PrintBestSolution(boolean verbose) {
         int depotNumber = 0;
@@ -136,19 +126,15 @@ public class Solver {
             int i = 1;
             for (List<Integer> route : depot.GetRoutes()) {
                 System.out.print("  Route " + i++ + ": ");
-                //System.out.print(_allCities[depot.getDepotNumber()] + " -> ");
                 int j = 0;
                 for (int city : route) {
                     j++;
                     System.out.print(verbose ? _allCities[city] : city);
                     if(j < route.size()) System.out.print(" , ");
                 }
-                //System.out.println(_allCities[depot.getDepotNumber()]);
                 System.out.println();
             }
             System.out.println();
-
-            //System.out.println(depot.getRoutes().get(0)  + " "+ depot.getRoutes().get(depot.getRoutes().size()-1) + " -> " + depot.getDepotNumber());
         }
         System.out.println("Total cost is " + _bestCost);
     }
