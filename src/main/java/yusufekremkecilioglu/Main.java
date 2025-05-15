@@ -1,6 +1,8 @@
 package yusufekremkecilioglu;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
+import yusufekremkecilioglu.Strategies.HeuristicSolveStrategy;
+import yusufekremkecilioglu.Strategies.RandomSolveStrategy;
 
 import static com.lexicalscope.jewel.cli.CliFactory.*;
 
@@ -19,12 +21,21 @@ public class Main {
         int s = cli.getSalesmen();
         boolean verbose = cli.isVerbose();
         Solver solver = new Solver(d, s);
-        solver.RandomSolve(100000);
+
+        solver.SetStrategy(new RandomSolveStrategy());
+        solver.Solve(100000);
         solver.PrintBestSolution(verbose);
 
-        solver.HeuristicSolve(5000000);
+        solver.SetStrategy(new HeuristicSolveStrategy());
+        solver.Solve(5000000);
         solver.PrintBestSolution(verbose);
-        solver.PrintMoveCount();
+
+        //solver.RandomSolve(100000);
+        //solver.PrintBestSolution(verbose);
+
+        //solver.HeuristicSolve(5000000);
+        //solver.PrintBestSolution(verbose);
+        //solver.PrintMoveCount();
 
         solver.WriteToJson(d,s, verbose);
     }

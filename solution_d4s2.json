@@ -1,31 +1,31 @@
 {
   "solution": [
     {
-      "depot": "45",
+      "depot": "UŞAK",
       "routes": [
-        "37 77 53 33 16 25 2 34 8 47 6 67 49",
-        "22 61 28 24 46 62 26"
+        "KİLİS BATMAN AĞRI ERZURUM RİZE ORDU KARAMAN KONYA ANTALYA ISPARTA",
+        "ESKİŞEHİR TUNCELİ ERZİNCAN KARABÜK BİLECİK BURSA İSTANBUL ÇANAKKALE BALIKESİR AYDIN"
       ]
     },
     {
-      "depot": "59",
+      "depot": "YOZGAT",
       "routes": [
-        "13 80 42 39 65 43 48 72 71 1 30 0",
-        "3 75 35 74 7 60 51 54"
+        "AKSARAY NİĞDE ŞANLIURFA BİNGÖL VAN KARS BAYBURT TRABZON GİRESUN ELAZIĞ MALATYA KAYSERİ",
+        "ÇORUM SİNOP KOCAELİ KIRKLARELİ İZMİR MANİSA AFYON KIRIKKALE"
       ]
     },
     {
-      "depot": "44",
+      "depot": "MUŞ",
       "routes": [
-        "9 21 38 40 76 10 15",
-        "41 69 50 32 11 68 27 4 36 17 70 19"
+        "BİTLİS MARDİN GAZİANTEP KIRŞEHİR DÜZCE TEKİRDAĞ BOLU KASTAMONU AMASYA SİVAS",
+        "IĞDIR ARTVİN GÜMÜŞHANE TOKAT KÜTAHYA MUĞLA BURDUR OSMANİYE HATAY"
       ]
     },
     {
-      "depot": "18",
+      "depot": "KAHRAMANMARAŞ",
       "routes": [
-        "55 29 64 12 20 78 79 5",
-        "14 31 63 58 66 73 56 52 23 57"
+        "İÇEL ADANA ADIYAMAN DİYARBAKIR SİİRT ŞIRNAK HAKKARİ ARDAHAN",
+        "SAMSUN BARTIN ZONGULDAK ANKARA DENİZLİ EDİRNE YALOVA SAKARYA ÇANKIRI NEVŞEHİR"
       ]
     }
   ]

@@ -3,16 +3,16 @@ package yusufekremkecilioglu;
 /**
  * Helper class
  */
-class TurkishNetwork {
+public class TurkishNetwork {
 
     private TurkishNetwork() {
     }
 
-    static final String[] cities = new String[]{
+    public static final String[] cities = new String[]{
             "ADANA", "ADIYAMAN", "AFYON", "AĞRI", "AMASYA", "ANKARA", "ANTALYA", "ARTVİN", "AYDIN", "BALIKESİR", "BİLECİK", "BİNGÖL", "BİTLİS", "BOLU", "BURDUR", "BURSA", "ÇANAKKALE", "ÇANKIRI", "ÇORUM", "DENİZLİ", "DİYARBAKIR", "EDİRNE", "ELAZIĞ", "ERZİNCAN", "ERZURUM", "ESKİŞEHİR", "GAZİANTEP", "GİRESUN", "GÜMÜŞHANE", "HAKKARİ", "HATAY", "ISPARTA", "İÇEL", "İSTANBUL", "İZMİR", "KARS", "KASTAMONU", "KAYSERİ", "KIRKLARELİ", "KIRŞEHİR", "KOCAELİ", "KONYA", "KÜTAHYA", "MALATYA", "MANİSA", "KAHRAMANMARAŞ", "MARDİN", "MUĞLA", "MUŞ", "NEVŞEHİR", "NİĞDE", "ORDU", "RİZE", "SAKARYA", "SAMSUN", "SİİRT", "SİNOP", "SİVAS", "TEKİRDAĞ", "TOKAT", "TRABZON", "TUNCELİ", "ŞANLIURFA", "UŞAK", "VAN", "YOZGAT", "ZONGULDAK", "AKSARAY", "BAYBURT", "KARAMAN", "KIRIKKALE", "BATMAN", "ŞIRNAK", "BARTIN", "ARDAHAN", "IĞDIR", "YALOVA", "KARABÜK", "KİLİS", "OSMANİYE", "DÜZCE"
     };
 
-    static final int[][] distance = new int[][]{
+    public static final int[][] distance = new int[][]{
             {0, 329, 573, 961, 613, 490, 558, 1030, 894, 894, 768, 628, 727, 677, 671, 837, 1094, 576, 575, 768, 518, 1169, 486, 675, 804, 688, 205, 727, 786, 900, 191, 620, 69, 939, 900, 1007, 690, 333, 1150, 375, 828, 356, 673, 388, 882, 185, 530, 871, 738, 287, 205, 718, 926, 791, 729, 701, 871, 429, 1071, 499, 852, 621, 342, 689, 895, 473, 754, 265, 809, 290, 475, 614, 711, 769, 1036, 1064, 893, 701, 242, 85, 722},
             {329, 0, 902, 648, 636, 755, 887, 755, 1223, 1223, 1057, 349, 414, 946, 1000, 1126, 1397, 785, 700, 1097, 205, 1438, 283, 548, 529, 977, 150, 712, 679, 667, 320, 949, 398, 1208, 1229, 732, 888, 437, 1419, 571, 1097, 685, 1002, 185, 1211, 164, 296, 1200, 463, 518, 534, 728, 853, 1060, 752, 388, 894, 414, 1340, 522, 779, 418, 110, 1018, 582, 612, 1023, 593, 654, 619, 684, 301, 478, 1038, 761, 751, 1162, 970, 209, 244, 991},
             {573, 902, 0, 1308, 590, 256, 292, 1236, 351, 321, 210, 1102, 1295, 418, 170, 273, 521, 387, 498, 225, 1091, 682, 960, 938, 1127, 144, 778, 866, 1008, 1473, 764, 169, 565, 452, 327, 1327, 501, 521, 663, 429, 341, 223, 100, 862, 309, 758, 1103, 370, 1212, 440, 458, 822, 1077, 304, 670, 1274, 684, 696, 584, 634, 1003, 1068, 915, 116, 1435, 472, 487, 365, 1031, 336, 331, 1187, 1284, 515, 1345, 1418, 336, 447, 815, 658, 373},

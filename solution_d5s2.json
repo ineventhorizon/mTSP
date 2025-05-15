@@ -1,38 +1,38 @@
 {
   "solution": [
     {
-      "depot": "ARTVİN",
+      "depot": "KASTAMONU",
       "routes": [
-        "BİTLİS SİİRT BATMAN ADIYAMAN GAZİANTEP KAHRAMANMARAŞ SİVAS ERZİNCAN",
-        "KARABÜK BOLU EDİRNE AFYON İÇEL MARDİN ŞIRNAK IĞDIR"
+        "BARTIN YALOVA BURSA KÜTAHYA ESKİŞEHİR KIRŞEHİR AKSARAY BAYBURT MUŞ HAKKARİ ARTVİN ÇORUM",
+        "KIRKLARELİ BALIKESİR DENİZLİ ANKARA"
+      ]
+    },
+    {
+      "depot": "ADANA",
+      "routes": [
+        "KARAMAN BURDUR AYDIN UŞAK KOCAELİ BOLU KARABÜK SAMSUN ORDU GÜMÜŞHANE IĞDIR SİİRT TUNCELİ MALATYA",
+        "ADIYAMAN ŞANLIURFA"
+      ]
+    },
+    {
+      "depot": "NİĞDE",
+      "routes": [
+        "MANİSA ÇANAKKALE İSTANBUL SAKARYA DÜZCE ZONGULDAK ÇANKIRI KIRIKKALE NEVŞEHİR",
+        "HATAY GAZİANTEP BATMAN DİYARBAKIR BİTLİS ERZURUM SİVAS"
       ]
     },
     {
       "depot": "KAYSERİ",
       "routes": [
-        "AKSARAY BURDUR BURSA YALOVA KOCAELİ KIRKLARELİ TRABZON",
-        "BAYBURT ERZURUM HATAY OSMANİYE ADANA ANTALYA MUĞLA AYDIN YOZGAT"
+        "KONYA ANTALYA ISPARTA İZMİR BİLECİK SİNOP AMASYA",
+        "GİRESUN RİZE ARDAHAN AĞRI VAN BİNGÖL ERZİNCAN"
       ]
     },
     {
-      "depot": "ISPARTA",
+      "depot": "MARDİN",
       "routes": [
-        "AMASYA TUNCELİ ARDAHAN ORDU SİNOP DÜZCE BARTIN SAKARYA TEKİRDAĞ DENİZLİ",
-        "KONYA KİLİS DİYARBAKIR ELAZIĞ KIRŞEHİR KIRIKKALE"
-      ]
-    },
-    {
-      "depot": "TOKAT",
-      "routes": [
-        "MUŞ ŞANLIURFA NİĞDE KARAMAN KÜTAHYA BİLECİK ANKARA",
-        "İSTANBUL ÇANAKKALE BALIKESİR İZMİR MANİSA UŞAK SAMSUN"
-      ]
-    },
-    {
-      "depot": "BİNGÖL",
-      "routes": [
-        "VAN HAKKARİ AĞRI GÜMÜŞHANE GİRESUN ÇORUM ÇANKIRI KASTAMONU ZONGULDAK ESKİŞEHİR NEVŞEHİR MALATYA",
-        "RİZE KARS"
+        "ŞIRNAK KARS TRABZON EDİRNE TEKİRDAĞ YOZGAT TOKAT ELAZIĞ",
+        "KİLİS AFYON MUĞLA İÇEL OSMANİYE KAHRAMANMARAŞ"
       ]
     }
   ]
