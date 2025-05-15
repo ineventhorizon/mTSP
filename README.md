@@ -246,12 +246,12 @@ Notice that 14,399km is less than 51,631km. Also print counts of the moves that 
 Which move does the heuristic algorithm benefit the most?
 
 ### Submit your solution -d 4 -s 2 :new:
-Save your best solution (for numDepots=4 and numSalesmen=2) in a file named `solution.json` and save it at the top-level directory
-(near the pom.xml and the README.md files). Commit and push your `solution.json` file to your repository.
-Here it does not matter how you obtain best solution. It can be be obtained from any heuristic algorithm (random or hill climbing).
-Or you can use commercial solvers if you want to: [GAMS](https://www.gams.com), [Gurobi](http://www.gurobi.com), [CPLEX](https://www.ibm.com/analytics/data-science/prescriptive-analytics/cplex-optimizer) etc.
-You can even construct it manually!!
-An example of a solution rendered in [JSON](https://github.com/google/gson) format is as follows:
+Save your best solution (for numDepots=4 and numSalesmen=2) in a file
+named solution.json and save it at the top-level directory (near the
+pom.xml). Add your solution.json file to your project file. Moreover,
+explain which design pattern did you use and draw a UML class diagram
+in a pdf file. Send your project files and pdf file.
+An example of a solution rendered in JSON format is as follows:
 ```json
 {
   "solution": [
@@ -287,9 +287,10 @@ An example of a solution rendered in [JSON](https://github.com/google/gson) form
 }
 ```
 
-The grading system will checkout your `solution.json` file and will calculate its cost function.
-Of course the solution must be valid. Some sanity checks will be performed.
-Any solution violating one of the rules will be rejected by the scoring system. 
+The grading system will checkout your solution.json file and will
+calculate its cost function. Of course the solution must be valid. Some
+sanity checks will be performed. Any solution violating one of the rules
+will be rejected by the scoring system
 
 Other than that, we will run your program on the server.
 The solution that your program will find/produce will be saved into a json file too (same format).
