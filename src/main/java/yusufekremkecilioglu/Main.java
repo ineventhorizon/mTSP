@@ -30,12 +30,6 @@ public class Main {
         solver.Solve(5000000);
         solver.PrintBestSolution(verbose);
 
-        //solver.RandomSolve(100000);
-        //solver.PrintBestSolution(verbose);
-
-        //solver.HeuristicSolve(5000000);
-        //solver.PrintBestSolution(verbose);
-        //solver.PrintMoveCount();
 
         solver.WriteToJson(d,s, verbose);
     }

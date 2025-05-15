@@ -46,10 +46,8 @@ public class RandomSolveStrategy extends AbstractSolveStrategy {
             cost = calculateCost();
 
             if(cost < _bestCost){
-                //System.out.println(cost);
                 saveToBestSolution(cost);
             }
-            //Cost hesabı ve en iyi costsa Solver classında kaydetme
         }
         return returnBest? _bestCost : cost;
     }

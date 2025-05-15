@@ -1,3 +1,6 @@
+#Yusuf Ekrem Keçilioğlu
+#BIL553_Nesne Tab. Sis.
+
 # Examples
 
 `mvn clean package`
@@ -13,14 +16,34 @@
 
 # UML'S
 
+Strategy Pattern usage
+
+The Strategy Pattern is used to define a family of algorithms, encapsulate each one, and make them interchangeable. This allows you to choose the algorithm's behavior at runtime.
+In here I used strategy pattern to define different algorithms for to solve mTSP problem which are, Random Solution and Heuristic Solve algorithms. They both use different algorithms to
+solve mTSP problem. Also Heuristic Solve strategy uses different commands to do it's job. I've also used a design pattern there which is Command pattern.
+
+![Strategy](UML/StrategyPattern.png)
+
+
 Command Pattern usage
-![Command](UML/Command.png)
+
+The Command Pattern encapsulates a request (or an action) as an object, allowing you to parameterize methods with different commands, queue them, log them, or even undo them.
+In this problem I needed to undo if the move is not performing well after it's operation. Commands are invoked via a command invoker class which also count's the successfull operations that reduces the overall cost.
+
+![Command](UML/CommandPattern.png)
 
 Main & Others
+
+I also defined a static class named Helper to reduce code repeats, Helper class helps to get random depots and indexes out of lists. 
+TurkishNetwork was provided but needed to change its visibility to public because I couldn't access through other packages.
+
 ![Main & Others](UML/Main&Others.png)
 
-Solver class
-![Solver](UML/Solver.png)
+
+
+
+
+
 
 # The Multiple Traveling Salesman Problem
 
