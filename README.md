@@ -93,7 +93,7 @@ Depot5: TOKAT
   Route2: AKSARAY,BİLECİK,ADANA,SİNOP,AMASYA,KİLİS,SAMSUN
 **Total cost is 52308
 ```
-
+  
 Non-verbose example `java -jar target/mTSP.jar -d 2 -s 5` will print city indices instead of city names:
 ```yaml
 Depot1: 18
