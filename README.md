@@ -296,10 +296,6 @@ The solution that your program will find/produce will be saved into a json file 
 But this time the name of the json file will include the parameters. 
 If the program ran with `-d 4 -s 2`, the result will be saved into `solution_d4s2.json`
 
-### Checkout the Leaderboard
 
-See which solutions have the best scores. Coming soon, stay tuned!
-
-:exclamation: For Part-II you will be teaming up with students of Industrial Engineering Department. Prepare yourselves.
 
 
